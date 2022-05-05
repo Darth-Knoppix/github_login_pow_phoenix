@@ -1,7 +1,7 @@
 <section class="phx-hero">
   <%= if @current_user do %>
-    <h1><%= @current_user.email %> - <%= @current_user.name %></h1>
-    <img src={@current_user.image}>
+    <h1><%= @current_user.email %></h1>
+    <%# <img src={@current_user.image}> %>
   <% else %>
     <p>No user</p>
   <% end %>
@@ -14,3 +14,6 @@
   <span><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></span>
   <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></span>
 <% end %>
+
+<%= for link <- PowAssent.Phoenix.ViewHelpers.provider_links(@conn),
+  do: content_tag(:span, link) %>
