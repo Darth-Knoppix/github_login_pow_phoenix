@@ -16,3 +16,7 @@ To get started:
 - Start Phoenix endpoint with `source .env && mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+## About me
+
+I'm [Seth](https://sethcorker.com/) and I have a blog about [web development with some Elixir posts](https://blog.sethcorker.com/topics/elixir/).
