@@ -2,6 +2,7 @@ defmodule GhLoginWeb.Router do
   use GhLoginWeb, :router
 
   pipeline :browser do
+    plug Ueberauth
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
@@ -12,6 +13,15 @@ defmodule GhLoginWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  scope "/auth", GhLoginWeb do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+    post "/:provider/callback", AuthController, :callback
+    delete "/logout", AuthController, :delete
   end
 
   scope "/", GhLoginWeb do

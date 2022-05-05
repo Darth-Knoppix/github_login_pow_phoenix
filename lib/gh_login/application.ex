@@ -15,9 +15,10 @@ defmodule GhLogin.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: GhLogin.PubSub},
       # Start the Endpoint (http/https)
-      GhLoginWeb.Endpoint
+      GhLoginWeb.Endpoint,
       # Start a worker by calling: GhLogin.Worker.start_link(arg)
-      # {GhLogin.Worker, arg}
+      # {GhLogin.Worker, arg},
+      GhLogin.MemStore
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
