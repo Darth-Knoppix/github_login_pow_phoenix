@@ -1,11 +1,10 @@
 <section class="phx-hero">
   <%= if @current_user do %>
     <h1><%= @current_user.email %></h1>
-    <%# <img src={@current_user.image}> %>
+    <img src={@current_user.picture}>
   <% else %>
     <p>No user</p>
   <% end %>
-  <p>Peace of mind from prototype to production</p>
 </section>
 
 <%= if Pow.Plug.current_user(@conn) do %>

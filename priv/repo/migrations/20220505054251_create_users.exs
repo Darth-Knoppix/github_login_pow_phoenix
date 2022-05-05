@@ -5,6 +5,7 @@ defmodule GhLogin.Repo.Migrations.CreateUsers do
     create table(:users) do
       add :email, :string, null: false
       add :password_hash, :string
+      add :picture, :string
 
       timestamps()
     end
