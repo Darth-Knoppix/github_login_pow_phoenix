@@ -1,8 +1,8 @@
 defmodule GhLoginWeb.Router do
   use GhLoginWeb, :router
+  use Pow.Phoenix.Router
 
   pipeline :browser do
-    plug Ueberauth
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
@@ -15,19 +15,27 @@ defmodule GhLoginWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/auth", GhLoginWeb do
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated,
+      error_handler: Pow.Phoenix.PlugErrorHandler
+  end
+
+  scope "/" do
     pipe_through :browser
 
-    get "/:provider", AuthController, :request
-    get "/:provider/callback", AuthController, :callback
-    post "/:provider/callback", AuthController, :callback
-    delete "/logout", AuthController, :delete
+    pow_routes()
   end
 
   scope "/", GhLoginWeb do
     pipe_through :browser
 
     get "/", PageController, :index
+  end
+
+  scope "/", GhLoginWeb do
+    pipe_through [:browser, :protected]
+
+    # Add your protected routes here
   end
 
   # Other scopes may use custom stacks.

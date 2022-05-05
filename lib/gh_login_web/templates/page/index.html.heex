@@ -8,15 +8,9 @@
   <p>Peace of mind from prototype to production</p>
 </section>
 
-<%= for user <- @all_users do %>
-  <li><%= user.email %></li>
-<% end %>
-
-<%= if @current_user do %>
-  <%= link "Logout", to: Routes.auth_path(@conn, :delete), method: "delete", class: "button" %>
+<%= if Pow.Plug.current_user(@conn) do %>
+  <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></span>
 <% else %>
-  <a class="button" href={Routes.auth_path(@conn, :request, "github")}>
-    <i class="fa fa-github"></i>
-    Sign in with GitHub
-  </a>
+  <span><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></span>
+  <span><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></span>
 <% end %>

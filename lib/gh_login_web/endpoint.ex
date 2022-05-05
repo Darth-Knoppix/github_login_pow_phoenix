@@ -46,5 +46,6 @@ defmodule GhLoginWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+  plug Pow.Plug.Session, otp_app: :gh_login
   plug GhLoginWeb.Router
 end
