@@ -1,6 +1,6 @@
-# GhLogin
+# GitHub Login with Pow for Phoenix
 
-An example of using [Pow](https://hexdocs.pm/pow/) with [PowAssent](https://hexdocs.pm/pow_assent/) to provide Login with GitHub for a Phoenix app.
+An example of using [Pow](https://hexdocs.pm/pow/) with [PowAssent](https://hexdocs.pm/pow_assent/) to provide Login with GitHub for a [Phoenix app](https://www.phoenixframework.org).
 
 ## Why Pow?
 
